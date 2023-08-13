@@ -1,8 +1,21 @@
-import logo from './logo.svg';
+import { Container } from 'react-bootstrap';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
-  return <></>;
+  return (
+    <div className="d-flex flex-column site-container">
+      <Header />
+      <main className="py-3">
+        <Container>
+          <HomeScreen />
+        </Container>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
