@@ -1,12 +1,13 @@
-import products from '../data/products';
+import products from '../data/products.js';
+import express from 'express';
 
-const router = require('express').Router();
+const router = express.Router();
 
-router.route.get('/api/products', (req, res) => {
+router.get('/', (req, res) => {
   res.json(products);
 });
 
-router.route.get('/api/products/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const product = products.find((p) => p._id === req.params.id);
 
   res.json(product);
