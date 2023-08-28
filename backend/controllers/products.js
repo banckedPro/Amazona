@@ -1,4 +1,3 @@
-import express from 'express';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/Product.js';
 
@@ -24,4 +23,4 @@ const getProductById = asyncHandler(async (req, res) => {
   res.json(product);
 });
 
-export { getProduct, getProducts };
+export { getProductById, getProducts };
