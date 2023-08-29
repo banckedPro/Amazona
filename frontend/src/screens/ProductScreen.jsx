@@ -6,7 +6,7 @@ import { useGetProductByIdQuery } from '../slice/productApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
-const Product = () => {
+const ProductScreen = () => {
   const { id: productId } = useParams();
 
   const { data: product, isLoading, error } = useGetProductByIdQuery(productId);
@@ -89,4 +89,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductScreen;
