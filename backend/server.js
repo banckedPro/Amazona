@@ -4,6 +4,8 @@ import colors from 'colors';
 import connectDB from './config/db.js';
 
 import productRouter from './routes/product.js';
+import userRouter from './routes/user.js';
+
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 // Initialized Express
@@ -15,11 +17,16 @@ dotenv.config();
 // Connecting to DB
 connectDB();
 
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded());
+
 app.get('/', function (req, res) {
   res.send('Server Started');
 });
 
 app.use('/api/products', productRouter);
+app.use('/api/users', userRouter);
 
 // Use Middlewares
 app.use(errorHandler);
