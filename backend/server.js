@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+
 import colors from 'colors';
 import connectDB from './config/db.js';
 
@@ -21,6 +23,8 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded());
 
+// Cookie Parser Middleware
+app.use(cookieParser());
 app.get('/', function (req, res) {
   res.send('Server Started');
 });
