@@ -5,10 +5,10 @@ const Footer = () => {
   const curYear = curTime.getFullYear();
 
   return (
-    <footer>
+    <footer className="py-1">
       <Container>
         <Row>
-          <Col className="text-center py-3">
+          <Col className="text-center">
             <p>Amazona &copy; {curYear}</p>
           </Col>
         </Row>
