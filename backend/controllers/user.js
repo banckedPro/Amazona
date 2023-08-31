@@ -17,14 +17,13 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid Credentials');
   }
 
-  let token = generateToken(res, user._id);
+  generateToken(res, user._id);
 
   res.json({
     _id: user._id,
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
-    token,
   });
 });
 
@@ -48,14 +47,13 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error(`Some Internal Error`);
   }
 
-  let token = generateToken(res, user._id);
+  generateToken(res, user._id);
 
   res.status(200).json({
     _id: user._id,
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
-    token,
   });
 });
 
