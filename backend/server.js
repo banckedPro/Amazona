@@ -20,8 +20,8 @@ dotenv.config();
 connectDB();
 
 // Body Parser Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded());
 
 // Cookie Parser Middleware
 app.use(cookieParser());
