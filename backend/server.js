@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 
 import productRouter from './routes/product.js';
 import userRouter from './routes/user.js';
+import orderRouter from './routes/order.js';
 
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
@@ -31,6 +32,7 @@ app.get('/', function (req, res) {
 
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
 
 // Use Middlewares
 app.use(errorHandler);
