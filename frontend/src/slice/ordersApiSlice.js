@@ -38,4 +38,5 @@ export const {
   useCreateOrderMutation,
   useGetOrderDetailQuery,
   useGetMyOrdersQuery,
+  useGetOrdersQuery,
 } = ordersApiSlice;
