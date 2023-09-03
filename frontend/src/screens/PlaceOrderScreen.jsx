@@ -48,10 +48,9 @@ const PlaceOrderScreen = () => {
       }).unwrap();
 
       dispatch(clearCartItems());
-      console.log(res);
+
       navigate(`/order/${res._id}`);
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
   };
