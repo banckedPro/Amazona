@@ -22,8 +22,9 @@ const ProfileScreen = () => {
     useProfileMutation();
 
   const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+
   const dispatch = useDispatch();
-  console.log(orders);
+
   useEffect(() => {
     if (userInfo) {
       setName(userInfo.name);
@@ -113,43 +114,49 @@ const ProfileScreen = () => {
             {error?.data?.message || error.error}
           </Message>
         ) : (
-          <Table hover responsive className="table-md">
-            <thead>
-              <tr>
-                <td>ID</td>
-                <td>DATE</td>
-                <td>TOTAL</td>
-                <td>PAID</td>
-                <td>DELIVERED</td>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>
-                    <Link to={`/order/${order._id}`}>{order._id}</Link>
-                  </td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <FaTimes style={{ color: 'red' }} />
-                    )}
-                  </td>
+          <>
+            {orders.length === 0 ? (
+              <Message className="my-3">You have no orders.</Message>
+            ) : (
+              <Table hover responsive className="table-md">
+                <thead>
+                  <tr>
+                    <td>ID</td>
+                    <td>DATE</td>
+                    <td>TOTAL</td>
+                    <td>PAID</td>
+                    <td>DELIVERED</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders.map((order) => (
+                    <tr key={order._id}>
+                      <td>
+                        <Link to={`/order/${order._id}`}>{order._id}</Link>
+                      </td>
+                      <td>{order.createdAt.substring(0, 10)}</td>
+                      <td>{order.totalPrice}</td>
+                      <td>
+                        {order.isPaid ? (
+                          order.paidAt.substring(0, 10)
+                        ) : (
+                          <FaTimes style={{ color: 'red' }} />
+                        )}
+                      </td>
 
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <FaTimes style={{ color: 'red' }} />
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+                      <td>
+                        {order.isDelivered ? (
+                          order.deliveredAt.substring(0, 10)
+                        ) : (
+                          <FaTimes style={{ color: 'red' }} />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
+          </>
         )}
       </Col>
     </Row>
