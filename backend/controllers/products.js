@@ -6,7 +6,7 @@ import Product from '../models/Product.js';
 // @access   Public
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
-  res.json(products);
+  res.status(200).json(products);
 });
 
 // @desc     Fetch All Products
@@ -20,7 +20,26 @@ const getProductById = asyncHandler(async (req, res) => {
     throw new Error(`Product not Found`);
   }
 
-  res.json(product);
+  res.status(200).json(product);
 });
 
-export { getProductById, getProducts };
+// @desc     Create a Products
+// @route    POST /api/products
+// @access   Private/Admin
+const createProduct = asyncHandler(async (req, res) => {
+  const product = new Product({
+    name: 'Sample Name',
+    price: 0,
+    user: req.user._id,
+    image: '/images/sample.jpg',
+    category: 'Sample Category',
+    countInStock: 0,
+    numReviews: 0,
+    description: 'Sample Description',
+  });
+
+  const createdProduct = await product.save();
+  res.status(201).json(createProduct);
+});
+
+export { getProductById, getProducts, createProduct };
