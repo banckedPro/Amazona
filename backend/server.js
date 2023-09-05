@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -8,6 +9,7 @@ import connectDB from './config/db.js';
 import productRouter from './routes/product.js';
 import userRouter from './routes/user.js';
 import orderRouter from './routes/order.js';
+import uploadRouter from './routes/uploadRoutes.js';
 
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
@@ -33,6 +35,10 @@ app.get('/', function (req, res) {
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/upload', uploadRouter);
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Use Middlewares
 app.use(errorHandler);
