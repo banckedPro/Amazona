@@ -75,7 +75,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  console.log(product);
   if (!product) {
     res.status(404);
     throw new Error(`Resource not found`);
