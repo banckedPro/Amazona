@@ -48,9 +48,7 @@ const UserListScreen = () => {
             {users.map((user) => {
               return (
                 <tr key={user._id}>
-                  <td>
-                    <Link to={`/order/${user._id}`}>{user._id}</Link>
-                  </td>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
