@@ -10,6 +10,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import { HelmetProvider } from 'react-helmet-async';
+
 import { Provider } from 'react-redux';
 import App from './App';
 import HomeScreen from './screens/HomeScreen';
@@ -61,7 +63,9 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <HelmetProvider>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </HelmetProvider>
 );
