@@ -50,7 +50,7 @@ const ProductScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await createReview(productId, rating, comment).unwrap();
+      await createReview({ productId, rating, comment }).unwrap();
       refetch();
       toast.success('Review Submitted');
     } catch (err) {
@@ -161,7 +161,7 @@ const ProductScreen = () => {
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
-                    <strong>{review.rating}</strong>
+                    <strong>{review.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
