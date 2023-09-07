@@ -74,7 +74,9 @@ const ProductListScreen = () => {
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
+                  <td>
+                    <Link to={`/product/${product._id}`}> {product._id}</Link>
+                  </td>
                   <td>{product.name}</td>
                   <td>$ {product.price}</td>
                   <td>{product.category}</td>
