@@ -28,9 +28,6 @@ app.use(express.json());
 
 // Cookie Parser Middleware
 app.use(cookieParser());
-app.get('/', function (req, res) {
-  res.send('Server Started');
-});
 
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
@@ -39,6 +36,18 @@ app.use('/api/upload', uploadRouter);
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+  // set static  folder
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+} else {
+  app.get('/', function (req, res) {
+    res.send('Server Started');
+  });
+}
 
 // Use Middlewares
 app.use(errorHandler);
