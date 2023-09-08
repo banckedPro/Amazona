@@ -17,8 +17,6 @@ const HomeScreen = () => {
     keyword,
   });
 
-  console.log(data);
-
   return (
     <>
       {isLoading ? (
