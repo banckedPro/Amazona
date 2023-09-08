@@ -9,6 +9,7 @@ import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import Meta from '../../components/Meta';
 
 const UserEditListScreen = () => {
   const [name, setName] = useState('');
@@ -42,6 +43,7 @@ const UserEditListScreen = () => {
 
   return (
     <>
+      <Meta title={`Edit User ${userId}`} />
       <Link to={'/admin/userlist'} className="btn btn-light my-3">
         Go Back
       </Link>
