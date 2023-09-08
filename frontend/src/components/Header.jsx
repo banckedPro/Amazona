@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slice/usersApiSlice';
 import { logout } from '../slice/authSlice';
+import SearchBox from './SearchBox';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -25,7 +26,13 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar
+        bg="dark"
+        variant="dark"
+        expand="md"
+        collapseOnSelect
+        className="p-3"
+      >
         <Container>
           <Navbar.Brand href="/" as={Link}>
             Amazona
@@ -33,6 +40,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox />
               <Nav.Link to="/cart" as={Link}>
                 <FaShoppingCart /> Cart
                 {cartItems.length > 0 && (
