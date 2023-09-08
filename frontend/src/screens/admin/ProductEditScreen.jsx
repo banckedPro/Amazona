@@ -11,6 +11,7 @@ import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import Meta from '../../components/Meta';
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -79,6 +80,7 @@ const ProductEditScreen = () => {
 
   return (
     <>
+      <Meta title={`Edit Product ${product._id}`} />
       <Link to={'/admin/productlist'} className="btn btn-light my-3">
         Go Back
       </Link>
