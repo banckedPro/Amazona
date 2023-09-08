@@ -16,6 +16,8 @@ const HomeScreen = () => {
     keyword,
   });
 
+  console.log(data);
+
   return (
     <>
       {isLoading ? (
@@ -25,13 +27,22 @@ const HomeScreen = () => {
       ) : (
         <>
           {keyword && (
-            <Link to={'/'} className="btn btn-light my-3">
-              Go Back
-            </Link>
+            <>
+              <Link to={'/'} className="btn btn-light my-3">
+                Go Back
+              </Link>
+              <h1>
+                {data.products.length} Result for {keyword}{' '}
+              </h1>
+            </>
           )}
-          {!keyword && <ProductCarousel />}
+          {!keyword && (
+            <>
+              <ProductCarousel />
+              <h1>Latest Products</h1>
+            </>
+          )}
 
-          <h1>Latest Products</h1>
           <Row>
             {data.products.map((product) => {
               return (
