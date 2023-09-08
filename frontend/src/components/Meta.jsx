@@ -10,4 +10,10 @@ const Meta = ({ title, description, keywords }) => {
   );
 };
 
+Meta.defaultProps = {
+  title: 'Welcome to Amazona',
+  description: 'We sell the best products for cheap',
+  keywords: 'electronics, buy electronics, cheap electronics',
+};
+
 export default Meta;
