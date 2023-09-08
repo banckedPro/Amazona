@@ -9,6 +9,7 @@ import Message from '../components/Message';
 import { useGetMyOrdersQuery } from '../slice/ordersApiSlice';
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Meta from '../components/Meta';
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -55,6 +56,7 @@ const ProfileScreen = () => {
 
   return (
     <Row>
+      <Meta title={'Profile'} />
       <Col md={3}>
         <h2>User Profile</h2>
 
