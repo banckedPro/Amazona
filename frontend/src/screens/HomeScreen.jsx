@@ -5,6 +5,7 @@ import { useGetProductsQuery } from '../slice/productApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { useParams } from 'react-router-dom';
+import Paginate from '../components/Paginate';
 
 const HomeScreen = () => {
   const { pageNumber } = useParams();
@@ -35,6 +36,12 @@ const HomeScreen = () => {
                 </Col>
               );
             })}
+          </Row>
+
+          <Row className="my-5">
+            <Col md={12} className="d-flex justify-content-center my-5">
+              <Paginate page={data.page} pages={data.pages} />
+            </Col>
           </Row>
         </>
       )}
