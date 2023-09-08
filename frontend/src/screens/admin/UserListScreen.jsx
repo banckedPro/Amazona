@@ -9,6 +9,7 @@ import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaEdit, FaTimes, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Meta from '../../components/Meta';
 
 const UserListScreen = () => {
   const { data: users, isLoading, error, refetch } = useGetUsersQuery();
@@ -28,6 +29,7 @@ const UserListScreen = () => {
 
   return (
     <>
+      <Meta title={'All Users'} />
       <h1>Users</h1>
       {isLoading ? (
         <Loader />
