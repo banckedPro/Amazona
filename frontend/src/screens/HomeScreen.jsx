@@ -8,9 +8,12 @@ import { useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 
 const HomeScreen = () => {
-  const { pageNumber } = useParams();
+  const { pageNumber, keyword } = useParams();
 
-  const { data, isLoading, error } = useGetProductsQuery(pageNumber);
+  const { data, isLoading, error } = useGetProductsQuery({
+    pageNumber,
+    keyword,
+  });
 
   return (
     <>
@@ -40,7 +43,7 @@ const HomeScreen = () => {
 
           <Row className="my-5">
             <Col md={12} className="d-flex justify-content-center my-5">
-              <Paginate page={data.page} pages={data.pages} />
+              <Paginate page={data.page} pages={data.pages} keyword={keyword} />
             </Col>
           </Row>
         </>
