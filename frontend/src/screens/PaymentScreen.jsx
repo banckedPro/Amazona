@@ -5,6 +5,7 @@ import { Button, Col, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { savePaymentMethod } from '../slice/cartSlice';
+import Meta from '../components/Meta';
 
 const PaymentScreen = () => {
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
@@ -26,6 +27,7 @@ const PaymentScreen = () => {
   };
   return (
     <FormContainer>
+      <Meta title={'Payment'} />
       <CheckoutSteps step1 step2 step3 />
       <h1 className="my-5">Payment Method</h1>
       <Form onSubmit={submitHandler}>
