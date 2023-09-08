@@ -11,9 +11,14 @@ import Message from '../../components/Message';
 import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Paginate from '../../components/Paginate';
+import Meta from '../../components/Meta';
+
 const ProductListScreen = () => {
-  const { pageNumber } = useParams();
-  const { data, isLoading, error, refetch } = useGetProductsQuery(pageNumber);
+  let { pageNumber } = useParams();
+
+  const { data, isLoading, error, refetch } = useGetProductsQuery({
+    pageNumber,
+  });
 
   const [createProduct, { isLoading: loadingCreateProduct }] =
     useCreateProductMutation();
@@ -45,6 +50,7 @@ const ProductListScreen = () => {
 
   return (
     <>
+      <Meta title={'Product List'} />
       <Row>
         <Col>
           <h1>Products</h1>
@@ -57,6 +63,7 @@ const ProductListScreen = () => {
         </Col>
       </Row>
       {loadingCreateProduct && <Loader />}
+
       {isLoading ? (
         <Loader />
       ) : error ? (
