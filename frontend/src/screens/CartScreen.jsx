@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slice/cartSlice';
+import Meta from '../components/Meta';
 
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const CartScreen = () => {
 
   return (
     <Row>
+      <Meta title={'My Cart'} />
       <h1 className="my-3">Shopping Cart</h1>
       <Col md={8}>
         {cartItems.length === 0 ? (
