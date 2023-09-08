@@ -2,10 +2,14 @@ import React from 'react';
 import { Pagination } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Paginate = ({ pages, page, isAdmin = false }) => {
+const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
   const navigate = useNavigate();
   const redirector = (x) => {
-    const target = !isAdmin ? `/page/${x + 1}` : `/admin/productlist/${x + 1}`;
+    const target = !isAdmin
+      ? keyword
+        ? `/search/${keyword}/page/${x + 1}`
+        : `/page/${x + 1}`
+      : `/admin/productlist/${x + 1}`;
     navigate(target);
   };
   return (
