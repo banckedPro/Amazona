@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+import Meta from '../components/Meta';
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -26,6 +27,7 @@ const HomeScreen = () => {
         <Message variant="danger">{error.data}</Message>
       ) : (
         <>
+          <Meta title={'Home'} />
           {keyword && (
             <>
               <Link to={'/'} className="btn btn-light my-3">
